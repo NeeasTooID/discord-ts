@@ -1,38 +1,30 @@
 // App.js
 
-import React, { useEffect } from 'react';
-import Discord from 'discord.js';
-import dotenv from 'dotenv';
+require('dotenv').config();
+const Discord = require('discord.js');
+const { exec } = require('child_process');
 
-dotenv.config();
+const client = new Discord.Client();
 
-function App() {
-  useEffect(() => {
-    const client = new Discord.Client();
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
 
-    client.on('ready', () => {
-      console.log(`Logged in as ${client.user.tag}!`);
-    });
-
-    client.on('message', msg => {
-      if (msg.content === '!ping') {
-        msg.reply('Pong!');
+client.on('message', async (msg) => {
+  if (msg.content.startsWith('!t')) {
+    const command = msg.content.slice(3).trim();
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        msg.reply(`Error: ${error.message}`);
+        return;
       }
+      if (stderr) {
+        msg.reply(`Error: ${stderr}`);
+        return;
+      }
+      msg.channel.send(`\`\`\`${stdout}\`\`\``);
     });
+  }
+});
 
-    client.login(process.env.DISCORD_BOT_TOKEN);
-
-    return () => {
-      client.destroy();
-    };
-  }, []);
-
-  return (
-    <div>
-      <h1>Discord Bot with React</h1>
-      <p>Check console for bot activity.</p>
-    </div>
-  );
-}
-
-export default App;
+client.login(process.env.DISCORD_BOT_TOKEN);
