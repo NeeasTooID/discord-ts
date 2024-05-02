@@ -1,26 +1,21 @@
 {
   "name": "discord-bot",
   "version": "1.0.0",
-  "description": "A simple Discord bot with ReactJS",
-  "main": "index.js",
+  "description": "A simple Discord bot that executes terminal commands.",
+  "main": "app.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node app.js"
   },
   "keywords": [
     "discord",
     "bot",
-    "reactjs"
+    "terminal",
+    "commands"
   ],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^13.1.0",
-    "dotenv": "^10.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3"
+    "dotenv": "^10.0.0"
   }
 }
