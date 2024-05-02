@@ -4,7 +4,8 @@
   "description": "A simple Discord bot that executes terminal commands.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "react-scripts build" // Perbarui bagian ini
   },
   "keywords": [
     "discord",
@@ -16,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^13.1.0",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "react-scripts": "^4.0.3" // Pastikan react-scripts terinstal
   }
 }
